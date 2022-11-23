@@ -34,6 +34,21 @@ class Container {
         }
     }
 
+    async update(elem, id) {
+        const objs = await this.listAll()
+        const index = objs.findIndex(o => o.id == id)
+        if (index == -1) {
+            throw new Error(`Error al actualizar: no se encontró el id ${id}`)
+        } else {
+            objs[index] = { ...elem, id }
+            try {
+                await fs.writeFile(this.route, JSON.stringify(objs, null, 2))
+            } catch (err) {
+                throw new Error(`Error al borrar: ${err}`)
+            }
+        }
+    }
+
 
 
 
