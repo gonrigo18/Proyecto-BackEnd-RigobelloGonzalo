@@ -60,3 +60,42 @@ productsRouter.put('/:id', onlyAdmins, async (req, res) => {
 productsRouter.delete('/:id', onlyAdmins, async (req, res) => {
     res.json(await productsApi.delete(req.params.id));
 })
+
+// configuro router de carritos
+
+const cartRouter = new Router();
+
+cartRouter.get('/', async (req, res) => {
+    res.json((await cartApi.listAll()).map(c => c.id));
+})
+
+cartRouter.post('/', async (req, res) => {
+    res.json({ id: await cartApi.save({ products: [] }) });
+})
+
+cartRouter.delete('/:id', async (req, res) => {
+    res.json(await cartApi.delete(req.params.id));
+})
+
+cartRouter.get('/:id/products', async (req, res) => {
+    const cart = await cartApi.list(req.params.id);
+    res.json(cart.products);
+})
+
+cartRouter.post('/:id/products', async (req, res) => {
+    const cart = await cartApi.list(req.params.id);
+    const product = await productsApi.list(req.body.id);
+    cart.products.push(product);
+    await cartApi.update(cart, req.params.id);
+    res.end()
+})
+
+cartRouter.delete('/:id/products/:idProd', async (req, res) => {
+    const cart = await cartApi.list(req.params.id);
+    const index = cart.products.findIndex(p => p.id == req.params.idProd);
+    if (index != -1) {
+        cart.products.splice(index, 1);
+        await cartApi.update(cart, req.params.id);
+    }
+    res.end();
+})
