@@ -49,6 +49,21 @@ class Container {
         }
     }
 
+    async delete(id) {
+        const objs = await this.listAll()
+        const index = objs.findIndex(o => o.id == id)
+        if (index == -1) {
+            throw new Error(`Error al borrar: no se encontró el id ${id}`)
+        }
+
+        objs.splice(index, 1)
+        try {
+            await fs.writeFile(this.route, JSON.stringify(objs, null, 2))
+        } catch (err) {
+            throw new Error(`Error al borrar: ${err}`)
+        }
+    }
+
 
 
 
