@@ -64,7 +64,13 @@ class Container {
         }
     }
 
-
+    async deleteAll() {
+        try {
+            await fs.writeFile(this.route, JSON.stringify([], null, 2))
+        } catch (err) {
+            throw new Error(`Error al borrar todo: ${err}`)
+        }
+    }
 
 
 }
