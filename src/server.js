@@ -14,12 +14,12 @@ const cartApi = new Container('cartDB.json');
 
 const isAdmin = true;
 
-function notAdmin(route, metod) {
+function notAdmin(route, method) {
     const error = {
         error: -1,
     }
-    if (route && metod) {
-        error.description = `ruta '${route}' metodo '${metod}' no autorizado`;
+    if (route && method) {
+        error.description = `ruta '${route}' metodo '${method}' no autorizado`;
     } else {
         error.description = 'no autorizado';
     }
