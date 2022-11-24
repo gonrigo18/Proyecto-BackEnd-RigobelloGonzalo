@@ -115,7 +115,7 @@ function makeHtmlTable(products) {
                     <td>$${prod.price}</td>
                     <td><img width="50" src=${prod.thumbnail} alt="not found"></td>
                     <td>${prod.category}</td>
-                    <td><a type="button" onclick="quitarDelCarrito('${prod.id}')">borrar</a></td>
+                    <td><a type="button" onclick="deleteFromCart('${prod.id}')">borrar</a></td>
                     </tr>`
         }
         html += `
