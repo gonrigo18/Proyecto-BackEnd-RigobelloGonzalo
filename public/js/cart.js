@@ -105,7 +105,7 @@ function makeHtmlTable(products) {
                 <tr>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Foto</th>
+                    <th>Imagen</th>
                     <th>Category</th>
                 </tr>`
         for (const prod of products) {
@@ -142,7 +142,7 @@ function loadSelectedProducts() {
         .then(products => {
             const selected = document.getElementById('selectedProducts');
             selected.appendChild(createMenu('elija un producto'));
-            for (const prod of productos) {
+            for (const prod of products) {
                 const selectedItem = document.createElement("option");
                 selectedItem.value = prod.id;
                 selectedItem.text = prod.title;
