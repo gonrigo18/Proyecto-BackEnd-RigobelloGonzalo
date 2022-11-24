@@ -1,9 +1,16 @@
 [
-    {
-      "title": "Ati radeon",
-      "price": "150000",
-      "thumbnail": "",
-      "category" : "Placas de video",
-      "id": "1"
-    }
-  ]
+  {
+    "title": "ati radeo",
+    "price": 333,
+    "thumbnail": "",
+    "category": "placas de video",
+    "id": 1
+  },
+  {
+    "title": "monitor",
+    "price": 213123,
+    "thumbnail": "",
+    "category": "sonido",
+    "id": 2
+  }
+]

@@ -1,7 +1,7 @@
 const express = require('express');
 const { Router } = express;
 
-const Container = require('./container/Container.js');
+const Container = require('./container/Container');
 
 // instancio servidor y persistencia
 
